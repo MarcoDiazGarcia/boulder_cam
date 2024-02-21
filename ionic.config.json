@@ -1,0 +1,7 @@
+{
+  "name": "boulder_cam",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
