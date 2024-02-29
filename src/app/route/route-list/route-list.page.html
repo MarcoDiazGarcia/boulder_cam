@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{gym?.name}} | Routes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="addRoute()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid *ngIf="gym?.routeCount; else routesEmpty">
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="2" *ngFor="let route of gym?.routes">
+        <ion-card class="route" (click)="viewRoute(route)">
+          <img [src]="route.imagePath" alt="gym image">
+          <ion-card-header class="gym-content">
+            <ion-card-title class="route-color">{{route.color}}</ion-card-title>
+            <ion-card-subtitle class="route-grade">{{route.grade}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content class="route-tries">
+            You have tried this route {{route.tries}} times.
+            <ng-template *ngIf="route.lastTried">
+              <br>
+              Last tried: {{route.lastTried | date}}
+            </ng-template>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ng-template #routesEmpty>
+    <div class="routes-empty">
+      <ion-text>
+        No routes found 😥.
+        <br>
+        But you can add your first one!
+      </ion-text>
+      <ion-button (click)="addRoute()">Add Your First Gym</ion-button>
+    </div>
+  </ng-template>
+</ion-content>

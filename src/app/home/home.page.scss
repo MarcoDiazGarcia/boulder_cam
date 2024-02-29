@@ -1,27 +1,65 @@
-#container {
+.gym {
+  width: 100%;
+  margin: 8px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.gym:hover {
+  background-color: var(--ion-color-step-100);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.gym-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
 }
 
-#container a {
-  text-decoration: none;
+.gym img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
 }
+
+.gym .gym-name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.gym .gym-city {
+    font-size: 14px;
+    color: var(--ion-color-step-600);
+}
+
+.gym .gym-info {
+    font-size: 14px;
+    color: var(--ion-color-step-400);
+}
+
+.gym .arrow {
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    margin-right: 8px;
+}
+
+.gyms-empty {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+

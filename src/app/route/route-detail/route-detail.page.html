@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>route-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="route?.videoCount">
+    <ion-item *ngFor="let video of route?.videos?.reverse()">
+      <div class="video">
+        <div class="try">
+          {{video?.numberOfTry}}
+        </div>
+        <div class="video-info">
+          <div class="climber">
+            {{video?.nameClimber}}
+          </div>
+          <div class="date">
+            {{video?.date | date: 'd/M/yy, h:mm a'}}
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

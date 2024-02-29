@@ -1,20 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Boulder Gyms
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="addGym()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list *ngIf="gyms; else gymsEmpty">
+    <ion-item *ngFor="let gym of gyms" (click)="viewGym(gym)">
+      <div class="gym">
+        <div class="gym-image">
+          <img [src]="gym.imagePath" alt="gym image">
+        </div>
+        <div class="gym-content">
+          <div class="gym-name">{{gym.name}}</div>
+          <div class="gym-city">{{gym.city}}</div>
+          <div class="gym-info">{{gym.lastVisited | date}} ● {{gym.routeCount}}</div>
+        </div>
+        <ion-icon class="arrow" name="caret-forward-outline"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ng-template #gymsEmpty>
+    <div class="gyms-empty">
+      <ion-text>
+        No gyms found 😥.
+        <br>
+        But you can add your first one!
+      </ion-text>
+      <ion-button (click)="addGym()">Add Your First Gym</ion-button>
+    </div>
+  </ng-template>
 </ion-content>
